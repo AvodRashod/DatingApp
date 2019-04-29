@@ -61,16 +61,11 @@ namespace DatingApp.API.Data
             }
         }
 
-        public async Task<bool> UserExists(string username)
+        async Task<bool> IAuthRepository.UserExists(string username)
         {
             if (await _context.Users.AnyAsync(x => x.Username == username))
                 return true;
             return false;
-        }
-
-        Task<User> IAuthRepository.UserExists(string username)
-        {
-            throw new NotImplementedException();
         }
     }
 }
